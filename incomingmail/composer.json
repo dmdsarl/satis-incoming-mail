@@ -1,0 +1,24 @@
+{
+    "name": "satis/incomingmail",
+    "description": "Sading claim by mail box",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Satis\\Incomingmail\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Patrick AMOUSSOU",
+            "email": "amoussou@dmdconsult.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Satis\\Incomingmail\\IncomingmailServiceProvider"
+            ]
+        }
+    },
+    "require": {}
+}
