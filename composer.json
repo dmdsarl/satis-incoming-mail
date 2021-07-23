@@ -1,6 +1,6 @@
 {
     "name": "satis/incomingmail",
-    "description": "Sading claim by mail box",
+    "description": "Saving claim by mail box",
     "license": "MIT",
     "autoload": {
         "psr-4": {
