@@ -24,7 +24,7 @@ trait ConfigValue
 
     public function getBaseUrl()
     {
-        return "http://localhost:8001/api/";
+        return "http://incoming-mail-service.local/api/";
     }
 
     public function getRegistrationUrl()
