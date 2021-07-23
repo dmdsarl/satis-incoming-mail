@@ -138,3 +138,10 @@ or change the logic of the code
 
     } 
 ```
+
+### API URL
+Add this link in your api route
+```php
+use App\Http\Controllers\IncomingMail\IncomingMailController;
+Route::post('satis/incoming/mail', [IncomingMailController::class, 'register']);
+```
