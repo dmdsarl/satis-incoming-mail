@@ -15,7 +15,7 @@ mail registration function. Also a config is generated in **config/incoming_mail
 
 ### Project configuration
 Access the configuration in config/incoming_mail.php to make your changes. 
-```console
+```php
 
 [
     "table" => "my_table", // Represents the name of the table in which you want to save the different received mails
@@ -30,14 +30,14 @@ Access the configuration in config/incoming_mail.php to make your changes.
         "attachments"=>"attachments", // Customize the name of the file field, this field is of type json
     ],
     "app_registration"=>[ //Incoming mail service subscription information
-        app_name' => 'Care - Rwanda', // Name of your application,
-        'url' => 'http://localhost:8000/satis/incoming/mail', // Registration link for incoming mail
-        mail_server' => 'smtp.gmail.com', // Maim host
-        mail_server_username' => 'test.dmd.arafath@gmail.com', // Mail username
-        mail_server_password' => 'P@ssword@DMD', // Mail password
-        mail_server_port' => '587', // Mail port
-        'app_login_url' => 'http://localhost:8000/oauth/token', // Api authentication
-        'app_login_params' => [ // Information to connect to your project. The different colunms to change following
+        "app_name" => 'Care - Rwanda', // Name of your application,
+        "url" => 'http://localhost:8000/satis/incoming/mail', // Registration link for incoming mail
+        "mail_server" => 'smtp.gmail.com', // Maim host
+        "mail_server_username" => 'test.dmd.arafath@gmail.com', // Mail username
+        "mail_server_password" => 'P@ssword@DMD', // Mail password
+        "mail_server_port" => '587', // Mail port
+        "app_login_url" => 'http://localhost:8000/oauth/token', // Api authentication
+        "app_login_params" => [ // Information to connect to your project. The different colunms to change following
             // arguments needed to connect to your project
             "grant_type" => "password",
             "client_id" => "93f64252-da39-4f90-86e8-c14a500c6d39",
@@ -46,7 +46,7 @@ Access the configuration in config/incoming_mail.php to make your changes.
             "password" => "123456"
         ],
     ]
-]
+];
 ```
 >For app_login_params you can for example use :
 ```console
