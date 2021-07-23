@@ -49,11 +49,11 @@ Access the configuration in config/incoming_mail.php to make your changes.
 ];
 ```
 >For app_login_params you can for example use :
-```console
+```php
 'app_login_params' => [
             "email" => "incoming-mail-care@dmdconsult.com",
             "password" => "123456"
-        ]
+        ];
 ```
 
 if these are the fields you need for the connection to your project
