@@ -1,11 +1,11 @@
 # Satis Incoming Mail
-###Installation 
+### Installation 
 
 ```console
 composer require satis/incomingmail 
 ```
 
-###Publish the package
+### Publish the package
 ```console
 php artisan vendor:publish --provider=Satis\Incomingmail\IncomingmailServiceProvider"
 ```
@@ -13,7 +13,7 @@ Once published, you will have access to a controller
 **IncomingMail/IncomingMailController.php** which allows you to customize the 
 mail registration function. Also a config is generated in **config/incoming_mail.php**.
 
-###Project configuration
+### Project configuration
 Access the configuration in config/incoming_mail.php to make your changes. 
 ```console
 
