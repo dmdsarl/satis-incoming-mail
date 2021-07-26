@@ -14,7 +14,7 @@ return [
     "app_registration" => [ //Incoming mail service subscription information
         "app_name" => 'Care - Rwanda', // Name of your application,
         "url" => 'http://localhost:8000/satis/incoming/mail', // Registration link for incoming mail
-        "mail_server" => 'smtp.gmail.com', // Maim host
+        "mail_server" => 'smtp.gmail.com', // Mail host
         "mail_server_username" => 'test.dmd.arafath@gmail.com', // Mail username
         "mail_server_password" => 'P@ssword@DMD', // Mail password
         "mail_server_port" => '587', // Mail port
