@@ -7,7 +7,7 @@ composer require satis/incomingmail
 
 ### Publish the package
 ```console
-php artisan vendor:publish --provider=Satis\Incomingmail\IncomingmailServiceProvider"
+php artisan vendor:publish --provider="Satis\Incomingmail\IncomingmailServiceProvider"
 ```
 Once published, you will have access to a controller 
 **IncomingMail/IncomingMailController.php** which allows you to customize the 
