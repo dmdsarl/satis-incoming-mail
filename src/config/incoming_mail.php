@@ -13,19 +13,19 @@ return [
     ],
     "app_registration" => [ //Incoming mail service subscription information
         "app_name" => 'Care - Rwanda', // Name of your application,
-        "url" => 'http://localhost:8000/satis/incoming/mail', // Registration link for incoming mail
+        "url" => 'http://localhost:8000/api/incoming/mail', // Registration link for incoming mail
         "mail_server" => 'smtp.gmail.com', // Mail host
-        "mail_server_username" => 'test.dmd.arafath@gmail.com', // Mail username
-        "mail_server_password" => 'P@ssword@DMD', // Mail password
+        "mail_server_username" => 'test@gmail.com', // Mail username
+        "mail_server_password" => '****', // Mail password
         "mail_server_port" => '587', // Mail port
-        "app_login_url" => 'http://localhost:8000/oauth/token', // Api authentication
+        "app_login_url" => 'http://localhost:8000/api/auth', // Api authentication
         "app_login_params" => [ // Information to connect to your project. The different colunms to change following
             // arguments needed to connect to your project
             "grant_type" => "password",
-            "client_id" => "93f64252-da39-4f90-86e8-c14a500c6d39",
-            "client_secret" => "r3CcD12cCIhpMJAwI7ipcfJw8eab01Mprq81f7vc",
-            "username" => "incoming-mail-care@dmdconsult.com",
-            "password" => "123456"
+            "client_id" => "*****************",
+            "client_secret" => "*****************************",
+            "username" => "user@example.com",
+            "password" => "******"
         ],
     ]
 ];
