@@ -24,12 +24,12 @@ trait ConfigValue
 
     public function getBaseUrl()
     {
-        return "http://incoming-mail-service.local/api/";
+        return Config::get("incoming_mail_service_subscribe"); ;
     }
 
     public function getRegistrationUrl()
     {
-        return $this->getBaseUrl()."subscribe";
+        return $this->getBaseUrl();
     }
 
     public function tableIdentities()

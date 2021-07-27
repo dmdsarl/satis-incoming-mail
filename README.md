@@ -145,3 +145,8 @@ Add this link in your api route
 use App\Http\Controllers\IncomingMail\IncomingMailController;
 Route::post('satis/incoming/mail', [IncomingMailController::class, 'register']);
 ```
+### API subscribe link for incoming mail service
+Put env api link subscribe mail with this variable 
+```console
+INCOMING_MAIL_SERVICE_SUBSCRIBE
+``` 

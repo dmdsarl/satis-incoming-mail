@@ -27,5 +27,6 @@ return [
             "username" => "user@example.com",
             "password" => "******"
         ],
+        "incoming_mail_service_subscribe"=>"http://incoming-mail-service.local/api/subscribe"
     ]
 ];
