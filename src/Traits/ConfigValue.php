@@ -24,7 +24,7 @@ trait ConfigValue
 
     public function getBaseUrl()
     {
-        return Config::get("incoming_mail_service_subscribe"); ;
+        return Config::get("incoming_mail.app_registration.incoming_mail_service_subscribe");
     }
 
     public function getRegistrationUrl()
