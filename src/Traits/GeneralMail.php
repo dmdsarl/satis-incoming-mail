@@ -16,6 +16,7 @@ trait GeneralMail
     public function register(Request $request, $addColumn = [])
     {
         $incomingMailService = new IncomingMailService();
+        $registeredMail = [];
         foreach ($request->data as $datum) {
             $formatData = $incomingMailService->formatData($datum);
             $object = [
@@ -35,8 +36,9 @@ trait GeneralMail
             $object["attachments"] = json_encode($object["attachments"]);
             DB::table($this->objectTable())
                 ->insertGetId($object + $addColumn);
+            array_push($registeredMail,$datum['header']["message_id"][0]);
         }
-        return true;
+        return json_encode($registeredMail);
     }
 
 }

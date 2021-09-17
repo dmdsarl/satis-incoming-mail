@@ -15,41 +15,46 @@ trait ClaimMail{
     public function register(Request $request,$addColumn = []){
         $incomingMailService = new IncomingMailService();
         $status = "incomplete";
+        $registeredMail = [];
         foreach ($request->data as $datum) {
-            $formatData = $incomingMailService->formatData($datum);
+            try {
+                $formatData = $incomingMailService->formatData($datum);
 
-            $identity = [
-                $this->getObject()["first_name"] => $formatData["first_name"],
-                $this->getObject()["last_name"] => $formatData["last_name"],
-                $this->getObject()["email"] => $formatData['address'],
-            ];
-            $identityId = $incomingMailService->storeOrRetrieveIdentity($identity);
-            $text = $this->messageFormat()=="html_text"?$datum['htmlMessage']:$datum['plainMessage'];
-            $claimId =Str::uuid();
-            DB::table($this->objectTable())
-                ->insertGetId([
-                        'id' => $claimId,
-                        'reference' => $incomingMailService->createReference($identityId),
-                        'description' => $text,
-                        'description_initial' => $text,
-                        'status' => $status,
-                        'recipient_id' => $identityId,
-                        "created_at" => $formatData['date'],
-                        "updated_at"=>now()
-                    ]+$addColumn);
-            Log::info(["claimId"=>$claimId]);
-            $attachments = $datum["attachments"];
-            for ($i = 0; $i < sizeof($attachments); $i++) {
-                $save_img = $this->base64SaveImg($attachments[$i], 'claim-attachments/', $i);
-                DB::table("files")->insertGetId([
-                   "id"=>Str::uuid(),
-                   "title"=>"Incoming mail attachment $i",
-                   "url"=>$save_img['link'],
-                   "attachmentable_id"=>$claimId,
-                   "attachmentable_type"=>"App\Models\Claim"
-                ]);
+                $identity = [
+                    $this->getObject()["first_name"] => $formatData["first_name"],
+                    $this->getObject()["last_name"] => $formatData["last_name"],
+                    $this->getObject()["email"] => $formatData['address'],
+                ];
+                $identityId = $incomingMailService->storeOrRetrieveIdentity($identity);
+                $text = $this->messageFormat()=="html_text"?$datum['htmlMessage']:$datum['plainMessage'];
+                $claimId =Str::uuid();
+                DB::table($this->objectTable())
+                    ->insertGetId([
+                            'id' => $claimId,
+                            'reference' => $incomingMailService->createReference($identityId),
+                            'description' => $text,
+                            'description_initial' => $text,
+                            'status' => $status,
+                            'recipient_id' => $identityId,
+                            "created_at" => $formatData['date'],
+                            "updated_at"=>now()
+                        ]+$addColumn);
+                $attachments = $datum["attachments"];
+                for ($i = 0; $i < sizeof($attachments); $i++) {
+                    $save_img = $this->base64SaveImg($attachments[$i], 'claim-attachments/', $i);
+                    DB::table("files")->insertGetId([
+                        "id"=>Str::uuid(),
+                        "title"=>"Incoming mail attachment $i",
+                        "url"=>$save_img['link'],
+                        "attachmentable_id"=>$claimId,
+                        "attachmentable_type"=>"App\Models\Claim"
+                    ]);
+                }
+                array_push($registeredMail,$datum['header']["message_id"][0]);
+            }catch (\Exception $e){
+                print_r("error saving mail");
             }
         }
-        return true;
+        return json_encode($registeredMail);
     }
 }
