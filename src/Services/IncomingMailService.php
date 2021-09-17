@@ -19,6 +19,7 @@ class IncomingMailService
         if(!$this->isIdentityExist($data)){
             $data["id"] =  Str::uuid();
             $identity = DB::table($this->tableIdentities())->insertGetId($data);
+            $identity = $this->isIdentityExist($data);
             return $identity;
         }
         if (isset($data["claimer_id"])){
@@ -38,6 +39,7 @@ class IncomingMailService
             if ($identity != null) {
                 return $identity->id;
             }
+            Log::info(["claimer identity"=>$identity]);
         }
 
         if(array_key_exists("email", $data) and $data['email'] != null and $data['email'] != ""){
@@ -45,6 +47,7 @@ class IncomingMailService
             if ($identity != null) {
                 return $identity->id;
             }
+            Log::info(["email identity"=>$identity]);
         }
 
         return false;
