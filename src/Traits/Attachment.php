@@ -2,6 +2,8 @@
 namespace Satis\Incomingmail\Traits;
 
 
+use Illuminate\Support\Facades\File;
+
 trait Attachment
 {
 
@@ -12,7 +14,11 @@ trait Attachment
         $base64_image = $base64_img;
         $data = substr($base64_image, strpos($base64_image, ',') + 1);
         $data = base64_decode($data);
-        file_put_contents(public_path("storage") . "/" . $link_store . $safeName, $data);
+        $path = public_path("storage") . "/" . $link_store;
+        if (!file_exists($path)) {
+            File::makeDirectory($path, $mode = 0777, true, true);
+        }
+        file_put_contents($path . $safeName, $data);
 
         return ["ext" => $extension, "link" =>  "/storage/" . $link_store . $safeName];
     }
